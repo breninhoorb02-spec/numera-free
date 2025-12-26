@@ -1,11 +1,11 @@
 import streamlit as st
+from auth import login
 
 st.set_page_config(
     page_title="NUMERA FREE",
     layout="centered"
 )
 
-# Forçar tema claro
 st.markdown("""
 <style>
 .main {
@@ -15,12 +15,10 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+if not login():
+    st.stop()
+
 st.title("NUMERA – Versão FREE")
 st.subheader("Plataforma de conciliação bancária por PDF")
 
-st.success("✅ App carregado com sucesso!")
-
-st.info("""
-Este é o primeiro teste da NUMERA FREE.
-Se você está vendo esta mensagem, o app está funcionando.
-""")
+st.success("✅ Login realizado com sucesso!")
