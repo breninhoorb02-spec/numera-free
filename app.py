@@ -1,6 +1,5 @@
 import streamlit as st
 from auth import login
-from planos import verificar_plano
 from pagamentos import acesso_pro
 
 st.set_page_config(page_title="NUMERA", layout="centered")
