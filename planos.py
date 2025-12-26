@@ -1,21 +1,17 @@
 import streamlit as st
 
-LIMITE_FREE = 1  # 1 uso permitido
+def verificar_plano():
+    if "codigo_pro" in st.session_state and st.session_state.codigo_pro:
+        return "PRO"
+    return "FREE"
 
 def pode_usar():
     if "usos" not in st.session_state:
         st.session_state.usos = 0
-
-    return st.session_state.usos < LIMITE_FREE
+    return st.session_state.usos < 1
 
 def registrar_uso():
-    if "usos" not in st.session_state:
-        st.session_state.usos = 0
-
     st.session_state.usos += 1
 
 def mostrar_upgrade():
-    st.warning(
-        "🚀 Você está usando a versão FREE. "
-        "Faça upgrade para liberar uso ilimitado."
-    )
+    st.warning("🚀 Limite FREE atingido. Faça upgrade para o plano PRO.")
